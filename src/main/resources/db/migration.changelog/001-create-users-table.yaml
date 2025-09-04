@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: nursultan
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+           tableExists:
+             tableName: users
+      changes:
+        - createSequence:
+            sequenceName: user_seq
+            startValue: 100
+            incrementBy: 1
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+
+              - column:
+                  name: email
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar
+              - column:
+                  name: role
+                  type: varchar(50)
+
