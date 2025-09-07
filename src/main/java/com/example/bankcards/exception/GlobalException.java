@@ -19,4 +19,23 @@ public class GlobalException {
                 message(notFoundException.getMessage())
                 .build();
     }
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ExceptionResponse illegalArgument(IllegalArgumentException illegalArgumentException) {
+        return ExceptionResponse.builder()
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .exceptionClassName(IllegalArgumentException.class.getSimpleName())
+                .message(illegalArgumentException.getMessage())
+                .build();
+    }
+    @ExceptionHandler(BadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionResponse badRequest(BadRequestException e) {
+        return ExceptionResponse.builder()
+                .httpStatus(HttpStatus.BAD_REQUEST).
+                exceptionClassName(e.getClass().getSimpleName()).
+                message(e.getMessage())
+                .build();
+    }
+
 }

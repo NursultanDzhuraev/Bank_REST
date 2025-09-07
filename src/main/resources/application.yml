@@ -17,6 +17,8 @@ spring:
   liquibase:
     change-log: db/migration.changelog/main-changelog.yaml
     enabled: true
+  encryption:
+    key: BankRestKey12345678iojerwoierhe90123456
 
 server:
   port: 8282
