@@ -3,6 +3,7 @@ package com.example.bankcards.controller;
 import com.example.bankcards.dto.PaginationResponse;
 import com.example.bankcards.dto.card.CardRequest;
 import com.example.bankcards.dto.card.CardResponse;
+import com.example.bankcards.dto.card.TransferRequest;
 import com.example.bankcards.service.CardService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -60,4 +61,11 @@ public class CardController {
     public String blocksOrActivatesCard(@PathVariable Long cardId) {
         return cardService.blocksOrActivatesCard(cardId);
     }
+    @Secured({"USER"})
+    @Operation(summary = "переводы между своими картами", description = "Доступен только для owner карту")
+    @PostMapping("/transferBetweenCards")
+    public ResponseEntity<?> transferBetweenCards(@RequestBody @Valid TransferRequest transferRequest){
+        return cardService.transferBetweenCards(transferRequest);
+    }
+
 }

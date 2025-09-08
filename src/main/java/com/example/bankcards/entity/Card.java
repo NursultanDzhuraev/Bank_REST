@@ -24,6 +24,9 @@ public class Card {
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private CardStatus status;
+    @Column(unique = true, nullable = false)
+    private String cardHash;
+    private String requestCardStatus;
 
     @ManyToOne
     private User user;

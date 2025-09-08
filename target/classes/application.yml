@@ -8,17 +8,20 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     open-in-view: false
   security:
     jwt:
       secret: bank_rest001100110011$$
   liquibase:
-    change-log: db/changelog/main-changelog.yaml
+    change-log: db/migration.changelog/main-changelog.yaml
     enabled: true
-
+  encryption:
+    key: BankRestKey12345678iojerwoierhe9
 
 server:
   port: 8282
-
+springdoc:
+  swagger-ui:
+    enabled: true

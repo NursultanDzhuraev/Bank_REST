@@ -2,24 +2,20 @@ package com.example.bankcards.dto.card;
 
 import com.example.bankcards.entity.Card;
 import com.example.bankcards.util.EncryptionUtil;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
 public class CardResponse {
     private String cardNumber;
     private BigDecimal balance;
-    private String expirationDate;
+    private LocalDate expirationDate;
     private String owner;
-
-    public CardResponse(
-            String maskedCardNumber,
-            BigDecimal balance,
-            LocalDate expirationDate,
-            String owner) {
-    }
+    private String cardStatus;
 
     public static CardResponse fromCard(Card card, EncryptionUtil encryptionUtil) {
         String decryptedCardNumber = encryptionUtil.decrypt(card.getCardNumber());
@@ -29,6 +25,7 @@ public class CardResponse {
                 maskedCardNumber,
                 card.getBalance(),
                 card.getExpirationDate(),
-                card.getUser().getFullName());
+                card.getUser().getFullName(),
+                card.getStatus().name());
     }
 }

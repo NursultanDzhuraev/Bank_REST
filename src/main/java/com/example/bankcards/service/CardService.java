@@ -3,6 +3,7 @@ package com.example.bankcards.service;
 import com.example.bankcards.dto.PaginationResponse;
 import com.example.bankcards.dto.card.CardRequest;
 import com.example.bankcards.dto.card.CardResponse;
+import com.example.bankcards.dto.card.TransferRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 
@@ -20,4 +21,6 @@ public interface CardService {
     List<CardResponse> findUserCards();
 
     String blocksOrActivatesCard(Long cardId);
+
+    ResponseEntity<?> transferBetweenCards(@Valid TransferRequest transferRequest);
 }

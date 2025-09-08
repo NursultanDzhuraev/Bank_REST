@@ -4,6 +4,7 @@ import com.example.bankcards.config.JwtService;
 import com.example.bankcards.dto.authentication.AuthResponse;
 import com.example.bankcards.dto.authentication.SingInRequest;
 import com.example.bankcards.entity.User;
+import com.example.bankcards.exception.IllegalArgumentException;
 import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.service.AuthService;
 import lombok.RequiredArgsConstructor;
